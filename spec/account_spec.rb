@@ -3,7 +3,7 @@ require 'account'
 
 
 describe Account do
-  
+
   let(:account){ Account.new }
 
   describe "#balance" do
@@ -17,6 +17,16 @@ describe Account do
       deposit = 500
       account.deposit(deposit)
       expect(account.balance).to eq 500
+    end
+  end
+
+  describe "withdrawal" do
+    it "has a withdrawal made" do
+      deposit = 500
+      account.deposit(deposit)
+      withdraw = 300
+      account.withdraw(withdraw)
+      expect(account.balance).to eq 200
     end
   end
 end
