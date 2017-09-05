@@ -31,3 +31,18 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+
+```
+As a Bank account owner.
+I want to make a deposit.
+So that I can save x amount of money in my account.
+
+As a Bank account owner.
+I want to make a withdrawal.
+So that I can withdraw x amount of money from my account.
+
+As a Bank account owner.
+I want to see a bank statement.
+So that I can keep track of my account history.
+
+```
