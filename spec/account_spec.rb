@@ -4,7 +4,14 @@ require 'account'
 
 describe Account do
 
-  let(:account){ Account.new }
+  let(:log){ :log }
+  let(:account){ Account.new(log) }
+
+  describe "to have a log" do
+    it "should have a log" do
+      expect(account.log).to eq :log
+  end
+end
 
   describe "#balance" do
     it "have a initial balance of 0" do
@@ -12,7 +19,7 @@ describe Account do
     end
   end
 
-  describe "deposit" do
+  describe "#deposit" do
     it "has a deposit paid into account" do
       deposit = 500
       account.deposit(deposit)
@@ -20,7 +27,7 @@ describe Account do
     end
   end
 
-  describe "withdrawal" do
+  describe "#withdrawal" do
     it "has a withdrawal made" do
       deposit = 500
       account.deposit(deposit)
