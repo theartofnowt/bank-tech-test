@@ -5,13 +5,20 @@ require 'account'
 describe Account do
 
   let(:log){ :log }
-  let(:account){ Account.new(log) }
+  let(:transfer_object){ :transfer_object }
+  let(:account){ Account.new(log, transfer_object) }
 
   describe "to have a log" do
     it "should have a log" do
       expect(account.log).to eq :log
   end
 end
+
+  describe "to have a transfer_object" do
+    it "should have a transfer object" do
+      expect(account.transfer_object).to eq :transfer_object
+    end
+  end
 
   describe "#balance" do
     it "have a initial balance of 0" do
