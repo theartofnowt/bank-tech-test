@@ -51,6 +51,8 @@ So that I can keep track of my account history.
 
 ### Instructions
 
+```
+
 git clone repo
 open irb
 require './lib/bank.rb'
@@ -62,3 +64,5 @@ account.statement
 transfers = account.statement.transfers
 transfers.each { |t| p t.date, t.amount, t.type }
 exit
+
+```

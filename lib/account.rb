@@ -1,6 +1,6 @@
 class Account
 
-attr_reader :balance, :statement, :transfer_object
+attr_reader :balance, :statement, :transaction
 
   def initialize(statement, transaction)
     @statement = statement
