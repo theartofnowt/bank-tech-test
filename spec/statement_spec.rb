@@ -3,7 +3,7 @@ require 'statement'
 
 describe Statement do
 
-  let(:statement){ Statement.new }
+  subject(:statement){ described_class.new }
   let(:transfer){ :transfer }
 
   describe "#statement" do
@@ -14,8 +14,15 @@ describe Statement do
 
   describe "#store" do
     it "stores a transfer" do
-      statement.store(transfer)
+      statement.store(:transfer)
       expect(statement.transfers).to eq ( [:transfer] )
+    end
+  end
+
+  describe "#all" do
+    it "returns all tansfers" do
+      statement.transfers << :transfer
+      expect(statement.all).to eq ( [:transfer] )
     end
   end
 

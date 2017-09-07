@@ -1,6 +1,6 @@
 class Statement
 
-  attr_accessor :transfers
+  attr_reader :transfers
 
   def initialize
     @transfers = Array.new
@@ -8,6 +8,10 @@ class Statement
 
   def store(transfer)
     @transfers.push(transfer)
+  end
+
+  def all
+    @transfers
   end
 
 end

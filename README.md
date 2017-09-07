@@ -46,3 +46,19 @@ I want to see a bank statement.
 So that I can keep track of my account history.
 
 ```
+
+------------
+
+### Instructions
+
+git clone repo
+open irb
+require './lib/bank.rb'
+statement = Statement.new
+account = Account.new(statement, Transactions)
+account.deposit(500)
+account.withdraw(200)
+account.statement
+transfers = account.statement.transfers
+transfers.each { |t| p t.date, t.amount, t.type }
+exit

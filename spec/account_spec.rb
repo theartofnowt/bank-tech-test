@@ -1,45 +1,47 @@
 require 'spec_helper'
 require 'account'
 
-
 describe Account do
 
-  let(:log){ :log }
-  let(:transfer_object){ :transfer_object }
-  let(:account){ Account.new(log, transfer_object) }
+  let(:transfer){ double(date: 7/7/7, amount: 700, type: :deposit)}
+  let(:log){ double(:log) }
+  let(:transfer_object){ double(:transfer_object) }
+  subject(:account){ described_class.new(log, transfer_object) }
 
-  describe "to have a log" do
-    it "should have a log" do
-      expect(account.log).to eq :log
+  describe "init" do
+    it "has a log" do
+      expect(account.log).to eq log
   end
+    it "has a transfer object" do
+      expect(account.transfer_object).to eq transfer_object
+    end
 end
 
-  describe "to have a transfer_object" do
-    it "should have a transfer object" do
-      expect(account.transfer_object).to eq :transfer_object
-    end
-  end
-
   describe "#balance" do
-    it "have a initial balance of 0" do
+    it "has a initial balance of 0" do
       expect(account.balance).to eq 0
     end
   end
 
   describe "#deposit" do
-    it "has a deposit paid into account" do
-      deposit = 500
-      account.deposit(deposit)
+    before(:each) do
+      allow(log).to receive(:store)
+      allow(transfer_object).to receive(:new)
+    end
+    it "changes the balance to 500" do
+      account.deposit(500)
       expect(account.balance).to eq 500
     end
   end
 
   describe "#withdrawal" do
-    it "has a withdrawal made" do
-      deposit = 500
-      account.deposit(deposit)
-      withdraw = 300
-      account.withdraw(withdraw)
+    before(:each) do
+      allow(log).to receive(:store)
+      allow(transfer_object).to receive(:new)
+    end
+    it "changes the balance to 200" do
+      account.deposit(500)
+      account.withdraw(300)
       expect(account.balance).to eq 200
     end
   end
